@@ -342,4 +342,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(ProjectDir)TactFiles\*.*" "$(TargetDir)bHaptics\" /S /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

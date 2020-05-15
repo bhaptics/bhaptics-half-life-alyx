@@ -1,0 +1,16 @@
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\TactsuitAlyx.exe.config
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\TactsuitAlyx.exe
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\TactsuitAlyx.pdb
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\Microsoft.WindowsAPICodePack.dll
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\Microsoft.WindowsAPICodePack.Sensors.dll
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\Microsoft.WindowsAPICodePack.Shell.dll
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\bin\Release\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.csprojResolveAssemblyReference.cache
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.Form1.resources
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.Properties.Resources.resources
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.SettingsForm.resources
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.csproj.GenerateResource.Cache
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.csproj.CoreCompileInputs.cache
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.exe
+F:\Study\alyx\TactsuitAlyx\TactsuitAlyx\obj\Release\TactsuitAlyx.pdb

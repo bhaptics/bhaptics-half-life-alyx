@@ -77,6 +77,7 @@ local twoHandMode = 0
 local menuOpen = 1
 local lastPlayerHealth = 100
 local mouthClosed = 0
+local coughing = 0
 
 local function starts_with(str, start)
    return str:sub(1, #start) == start
@@ -584,14 +585,24 @@ local function PlayerCoughFunc()
     mouthClosed = newMouthClosed
 
     if mouthClosed == 0 then
-      WriteToFile("{PlayerCough}\n") 
+      if coughing == 0 then
+        coughing = 1
+        WriteToFile("{PlayerCoughStart}\n") 
+      end
+    else
+      if coughing == 1 then
+        coughing = 0
+        WriteToFile("{PlayerCoughEnd}\n") 
+      end
     end  
+  else
+    if coughing == 1 then
+      coughing = 0
+      WriteToFile("{PlayerCoughEnd}\n") 
+    end
   end
 end
 
-function 	OnHealthStationOpen	(param) 
-  --WriteToFile("{HealthStationOpen}\n") 
-  end
 function 	OnPlayerShotgunShellLoaded	(param) WriteToFile("{PlayerShotgunShellLoaded}\n") end
 --function 	OnPlayerShotgunStateChanged	(param) WriteToFile("{PlayerShotgunStateChanged|" .. tostring(param["shotgun_state"]) .. "}\n") end
 function 	OnPlayerShotgunUpgradeGrenadeLauncherState	(param) WriteToFile("{PlayerShotgunUpgradeGrenadeLauncherState|" .. param["state"] .. "}\n") end -- state 0: grenade launched - state 1: grenade attached - state 2: grenade ready -> Check and wait for 2 to 0
@@ -683,6 +694,7 @@ function 	OnHealthPenTeachStorage	(param) WriteToFile("{HealthPenTeachStorage}\n
 function 	OnHealthVialTeachStorage	(param) WriteToFile("{HealthVialTeachStorage}\n") end
 function 	OnPlayerCoveredMouth	(param) 
   mouthClosed = 1 
+  coughing = 0
   WriteToFile("{PlayerCoveredMouth}\n") 
 end
 --function 	OnPlayerUpgradedWeapon	(param) WriteToFile("{PlayerUpgradedWeapon}\n") end
@@ -1110,7 +1122,7 @@ if onplayer_retrieved_backpack_clip_handle == nil then onplayer_retrieved_backpa
 if onplayer_drop_ammo_in_backpack_handle == nil then onplayer_drop_ammo_in_backpack_handle=ListenToGameEvent("player_drop_ammo_in_backpack",OnPlayerDropAmmoInBackpack, nil) end
 if onplayer_drop_resin_in_backpack_handle == nil then onplayer_drop_resin_in_backpack_handle=ListenToGameEvent("player_drop_resin_in_backpack",OnPlayerDropResinInBackpack, nil) end
 if onplayer_using_healthstation_handle == nil then onplayer_using_healthstation_handle=ListenToGameEvent("player_using_healthstation",OnPlayerUsingHealthstation, nil) end
-if onhealth_station_open_handle == nil then onhealth_station_open_handle=ListenToGameEvent("health_station_open",OnHealthStationOpen, nil) end
+--if onhealth_station_open_handle == nil then onhealth_station_open_handle=ListenToGameEvent("health_station_open",OnHealthStationOpen, nil) end
 if onplayer_shotgun_shell_loaded_handle == nil then onplayer_shotgun_shell_loaded_handle=ListenToGameEvent("player_shotgun_shell_loaded",OnPlayerShotgunShellLoaded, nil) end
 --if onplayer_shotgun_state_changed_handle == nil then onplayer_shotgun_state_changed_handle=ListenToGameEvent("player_shotgun_state_changed",OnPlayerShotgunStateChanged, nil) end
 if onplayer_shotgun_upgrade_grenade_launcher_state_handle == nil then onplayer_shotgun_upgrade_grenade_launcher_state_handle=ListenToGameEvent("player_shotgun_upgrade_grenade_launcher_state",OnPlayerShotgunUpgradeGrenadeLauncherState, nil) end

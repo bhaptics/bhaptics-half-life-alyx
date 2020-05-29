@@ -63,29 +63,27 @@ by clicking their labels to achieve intended intensity or duration settings.
 
 ## COMPATIBILITY
 
-This mod comes with scripts folder installed. 
-If you have any other mod that adds “game/hlvr/scripts/vscripts/init.lua” file, then you need to manually merge the files.
+This mod supports both the main game and any mods that use the same assets.
 
-Open init.lua with a text editor like notepad or notepad++ and at the end of the file you’ll see:
+This mod comes with scripts folder installed. To load that, one line is added to “game/hlvr/cfg/skill_manifest.cfg” file. It's very unlikely, but if you have another mod that modifies that file, then you need to manually merge the files.
+
+Open game/hlvr/cfg/skill_manifest.cfg with a text editor like notepad or notepad++ and in the file you’ll see:
 
 ```
-function include_script(script)
-	if DoIncludeScript(script, _G) then
-		print("...Included script "..script)
-	end
-end
+exec skill.cfg
+exec skill_episodic.cfg
+exec skill_hlvr.cfg
 
--- ADD USER SCRIPTS HERE
-Msg("Loading user scripts...")
-
-include_script("user/tactsuit.lua")
+script_reload_code tactsuit.lua
 ```
 
-Make sure this section is there, and include_script("user/tactsuit.lua") line is there for this mod, 
-and add other mod’s content too to include any other scripts etc.
+Make sure script_reload_code tactsuit.lua line is there for this mod, and add other mod’s content too to include any other scripts etc.
 
 
 ## CHANGELOG
+* 1.1:
+Added support for game version 1.4
+
 * 1.0:
 Official release.
 

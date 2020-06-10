@@ -136,8 +136,8 @@ namespace TactsuitAlyx
         {
             TactsuitVR.FeedbackType feedback = tactsuitVr.GetFeedbackTypeOfWeaponFromPlayer(weapon, leftHandedMode);
 
-            if ((leftHandedMode && !tactsuitVr.hapticPlayer.IsActive(PositionType.ForearmL)) ||
-                (!leftHandedMode && !tactsuitVr.hapticPlayer.IsActive(PositionType.ForearmR)))
+            if ((leftHandedMode && !(tactsuitVr.hapticPlayer.IsActive(PositionType.ForearmL) || tactsuitVr.hapticPlayer.IsActive(PositionType.Left))) ||
+                (!leftHandedMode && !(tactsuitVr.hapticPlayer.IsActive(PositionType.ForearmR) || tactsuitVr.hapticPlayer.IsActive(PositionType.Right))))
             {
                 //Use Fallback instead.
                 feedback = tactsuitVr.GetFallbackTypeOfWeaponFromPlayer(feedback, leftHandedMode);
@@ -242,6 +242,7 @@ namespace TactsuitAlyx
             gravitySecondaryLock = false;
             lowHealthFeedbackPlaying = false;
             veryLowHealthFeedbackPlaying = false;
+            tactsuitVr.ProvideHapticFeedback(0, 0, TactsuitVR.FeedbackType.HeartBeat, true, TactsuitVR.FeedbackType.NoFeedback);
         }
 
         public void PlayerDeath(int damagebits)

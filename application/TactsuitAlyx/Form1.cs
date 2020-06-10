@@ -381,6 +381,8 @@ namespace TactsuitAlyx
                 }
                 else
                 {
+                    WriteTextSafe("Cannot file console.log. Waiting.");
+
                     Thread.Sleep(2000);
                 }
             }
@@ -389,6 +391,26 @@ namespace TactsuitAlyx
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            string exePath = txtAlyxDirectory.Text + "\\game\\bin\\win64\\hlvr.exe";
+            if (!File.Exists(exePath))
+            {
+                MessageBox.Show("Please select your Half-Life Alyx installation folder correctly first.", "Error Starting", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string scriptPath = txtAlyxDirectory.Text + "\\game\\hlvr\\scripts\\vscripts\\tactsuit.lua";
+            if (!File.Exists(scriptPath))
+            {
+                MessageBox.Show("Script file installation is not correct. Please read the instructions on the mod page and reinstall.", "Script Installation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string scriptLoaderPath = txtAlyxDirectory.Text + "\\game\\hlvr\\cfg\\skill_manifest.cfg";
+            string configText = File.ReadAllText(scriptLoaderPath);
+            if (!configText.Contains("script_reload_code tactsuit.lua"))
+            {
+                MessageBox.Show("skill_manifest.cfg file installation is not correct. Please read the instructions on the mod page and reinstall.", "Script Installation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             btnStart.Enabled = false;
             btnStop.Enabled = true;
             btnBrowse.Enabled = false;
@@ -447,7 +469,17 @@ namespace TactsuitAlyx
         {
             if (tactsuitVr != null)
             {
-                string active = ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.All)) ? " {All} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.Vest)) ? " {Vest} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.ForearmR)) ? " {Right Arm} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.ForearmL)) ? " {Left Arm} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.Head)) ? " {Head} " : "");
+                string active = ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.All)) ? " {All} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.Vest)) ? " {Vest} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.ForearmR) || tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.Right)) ? " {Right Arm} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.ForearmL) || tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.Left)) ? " {Left Arm} " : "") + ((tactsuitVr.hapticPlayer._activePosition.Contains(PositionType.Head)) ? " {Head} " : "");
+
+                //string activeDevices = "";
+                //for (int i = 0; i < tactsuitVr.hapticPlayer._activePosition.Count; i++)
+                //{
+                //    if (i > 0)
+                //    {
+                //        activeDevices += ",";
+                //    }
+                //    activeDevices += (int)tactsuitVr.hapticPlayer._activePosition[i];
+                //}
 
                 if (active.Trim().IsNullOrEmpty())
                     active = "{None}";

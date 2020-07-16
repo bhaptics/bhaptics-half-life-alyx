@@ -449,6 +449,7 @@ namespace TactsuitAlyx
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "C:\\";
+            dialog.RestoreDirectory = true;
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {

@@ -45,7 +45,7 @@ namespace Bhaptics.Tact
 
 
         private bool _websocketConnected = false;
-        private readonly string WebsocketUrl = "ws://127.0.0.1:15881/v2/feedbacks?app_id=MOD_HLVR&app_name=Mod_Half_Life_Alix";
+        private readonly string WebsocketUrl = "ws://127.0.0.1:15881/v2/feedbacks?app_id=MOD_HLVR&app_name=Mod_Half_Life_Alyx";
 
         public event Action<PlayerResponse> StatusReceived;
         public event Action<bool> ConnectionChanged;

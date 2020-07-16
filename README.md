@@ -1,6 +1,6 @@
 # bhaptics-half-life-alyx
 
-## MOD LINK : https://www.nexusmods.com/halflifealyx/mods/6
+* MOD LINK : https://www.nexusmods.com/halflifealyx/mods/6
 
 ## SUMMARY
 

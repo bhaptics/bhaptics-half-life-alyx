@@ -1,5 +1,7 @@
 # bhaptics-half-life-alyx
 
+## MOD LINK : https://www.nexusmods.com/halflifealyx/mods/6
+
 ## SUMMARY
 
 bHaptics Tactsuit integration mod for Half-Life Alyx. Many different haptic effects on Vest, 
